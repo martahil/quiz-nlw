@@ -133,7 +133,7 @@ input:checked:before {
 
   position: fixed; /*aparece no bottom da página, independentemente da barra de rolagem*/
   bottom: 0;
-  left: zero;
+  left: 0;
   width: 100%; /*ocupa toda a largura da tela*/
 
   padding: 12px;
