@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Titillium+Web&display=swap');
+
+*, :root { /*seletor universal + tudo o que tiver na raíz (html)*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*As medidas das caixas serão contadas de borda a borda (de ponta a ponta). Ex: ao aplicar um padding, a caixa de expande sem este recurso.*/
+
+  font-family: 'Inter', sans-serif;
+
+  /*traz delicadeza para a fonte*/
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: #0F172A;
+}
+
+main {
+  padding: 20px;
+  /* border: 1px solid greenyellow; */
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+
+header {
+  margin-top: 64px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid#344155;
+}
+
+header h1 {
+  font-size: 30px;
+  color: #f1f5f9;
+  margin-top: 24px;
+}
+
+#quiz { /*inserindo um número nas questões*/
+  counter-reset: quiz-item;
+}
+
+.quiz-item {
+  margin-top: 24px;
+  border: 1px solid #475569;
+  border-radius: 6px;
+
+  overflow: hidden; /*a box da pergunta estava transbordando a box da questão*/
+}
+
+.quiz-item h3 {
+  padding: 16px 20px;
+  color: #e2e8f0;
+
+  display: flex; /*faz com que o número da questão fique ao lado (esquerdo) da questão*/
+  align-items: center;
+  gap: 12px;
+
+  background-color: #1e293b;
+}
+
+.quiz-item h3:before { /*inserindo um número nas questões*/
+  counter-increment: quiz-item;
+  content: counter(quiz-item);
+
+  background-color: #475569;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center; /*eixo y*/
+  justify-content: center; /*eixo x*/
+
+  flex-shrink: 0; /*Ao reduzir a tela, o número da questão estava encolhendo. O shrink evitta encolhimento e espichamento dos elementos ao reduzir-aumentar o tamanho do navegador*/
+}
+
+.quiz-item dl {
+  padding: 20px 24px;
+
+  /*Coloca espaço entre as alternativas, sem colocar um espaço extra abaixo da terceira alternativa*/
+  display: grid;
+  gap: 8px; /*aqui o gap só funciona com o grid*/
+}
+
+.quiz-item dl dt {
+  font-size: 14px;
+  line-height: 24px; /*altura da linha entre as alternativas*/
+  letter-spacing: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e2e8f0;
+}
+
+input {
+  all: unset; /*all: todas as propriedades que já existem no input até então*/
+  border: 1px solid #94a3b8;
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%; /*arredonda o input*/
+
+  display: flex;
+  /*alinhar a bolinha na alternativa clicada*/
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0; /*Ao reduzir a tela, a bolinha da alternativa pode encolher. O shrink evitta encolhimento e espichamento dos elementos ao reduzir-aumentar o tamanho do navegador*/
+}
+
+input:checked {
+  border: 1px solid #A3E635;
+}
+
+/*pseudo-selector :before*/
+input:checked:before {
+  content: ""; /*este cínteúdo vazio foi criado para ser inserido antes (lado esquerdo) do input, e assim é possível inserir propriedades css como largura e altura*/
+  width: 10px;
+  height: 10px;
+  /* display: block; */ /*esta linha foi comentada pois foi inserido um display: flex no input*/
+  background-color: #A3E635;
+  border-radius: 50px;
+}
+
+#acertos {
+  text-align: center;
+  background-color: #a3E635;
+
+  position: fixed; /*aparece no bottom da página, independentemente da barra de rolagem*/
+  bottom: 0;
+  left: zero;
+  width: 100%; /*ocupa toda a largura da tela*/
+
+  padding: 12px;
+}
+
+/* asterisco pega todos os elementos da tela*/
+/*
+* {
+  border: 1px solid red;
+}
+*/
